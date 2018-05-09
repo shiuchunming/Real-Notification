@@ -1,0 +1,20 @@
+{
+    "name": "TO BE DETERMINE",
+    "version": "0.1.0",
+    "description": "TO BE DETERMINE",
+    "background": {
+        "scripts": [
+            "js/fb_fetcher.js"
+        ],
+        "persistent": true
+    },
+    "browser_action": {
+        "default_title": "TO BE DETERMINE"
+    },
+    "manifest_version": 2,
+    "permissions": [
+        "https://*/*",
+        "http://*/*",
+        "tabs"
+    ]
+}
