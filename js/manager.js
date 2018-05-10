@@ -1,5 +1,4 @@
 const Manager = (() => {
-    const EXTENSION_NAME = "TO BE DETERMINE";
     
     let instance, browserAction;
     
@@ -14,25 +13,14 @@ const Manager = (() => {
             }
             return instance;
         };
-
-        loginError() {
-            error("Please login to facebook first");
-        }
-
-        unexpectedError(e) {
-			console.error(e);
-        }
         
-        change_icon = (count) => {
+        change_icon(count) {
             console.log("DEBUG::Change Icon");
             browserAction.setBadgeText({
-                text: badgeText.toString()
+                text: count.toString()
             });
         };
-    
-
     }
-
     return Manager;
 
 })();

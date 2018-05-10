@@ -16,21 +16,11 @@ const Parser = (() => {
         }
 
         parse(response) {
-            try {
-				counts.messages = response.querySelector("#messages_jewel").querySelector(COUNT_CLASS).innerText
-            } catch(e) {
-                if(isLogin(response)){
-                    manager.loginError();
-                }
-                else {
-                    manager.unexpectedError(e);
-                }
-            }
+            const COUNT_CLASS = "._59tg";
+            counts.messages = response.querySelector("#messages_jewel").querySelector(COUNT_CLASS).innerText
             status.set_counts(counts);
         }
     }
-
-    const isLogin = response => response.querySelector("#login_form");
 
     return Parser;
 })();

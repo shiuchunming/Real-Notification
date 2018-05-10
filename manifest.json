@@ -18,6 +18,7 @@
     },
     "manifest_version": 2,
     "permissions": [
+        "*://m.facebook.com/*",
         "*://www.facebook.com/*",
         "tabs"
     ]

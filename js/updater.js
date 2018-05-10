@@ -6,7 +6,7 @@ const Updater = (() => {
     let interval_id;
     let update_stack;
 
-    class updater {
+    class Updater {
         constructor(s, m) {
             if(!instance) {
                 instance = this;
@@ -46,5 +46,5 @@ const Updater = (() => {
         update_stack.push(nextRound);
     };
 
-    return updater;
+    return Updater;
 })();
