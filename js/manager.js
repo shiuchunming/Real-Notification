@@ -1,7 +1,7 @@
 const Manager = (() => {
     const EXTENSION_NAME = "TO BE DETERMINE";
     
-    let instance, browserAction, currentIcon;
+    let instance, browserAction;
     
     class Manager {
         constructor(browser_action) {
@@ -20,12 +20,10 @@ const Manager = (() => {
         }
     }
 
-    const change_icon = (icon, count) => {
+    const change_icon = (count) => {
         browserAction.setBadgeText({
             text: badgeText.toString()
         });
-
-        currentIcon = icon;
     };
 
     return Manager;
