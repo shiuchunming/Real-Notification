@@ -18,9 +18,15 @@ const Manager = (() => {
         loginError() {
             error("Please login to facebook first");
         }
+
+        unexpectedError(e) {
+			console.error(e);
+		}
+
     }
 
     const change_icon = (count) => {
+        console.log("DEBUG::Change Icon");
         browserAction.setBadgeText({
             text: badgeText.toString()
         });

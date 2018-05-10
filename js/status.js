@@ -26,15 +26,15 @@ const Status = (()=>{
         }
 
         get_requests_num() {
-            return parseInt(counts.requests);
+            return Number(counts.requests);
         }
 
         get_messages_num() {
-            return parseInt(counts.messages);
+            return Number(counts.messages);
         }
 
         get_notifications_num() {
-            return parseInt(counts.notifications);
+            return Number(counts.notifications);
         }
     }
 

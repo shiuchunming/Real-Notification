@@ -1,9 +1,7 @@
-import { stat } from "fs";
-
 let manager;
 
 window.addEventListener("load", ()=>{
-    const UPDATE = 1000 * 30;
+    const UPDATE = 1000 * 10    ;
 
     const status = new Status();
     manager = new Manager(chrome.browserAction);

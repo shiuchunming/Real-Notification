@@ -1,5 +1,3 @@
-import { stat } from "fs";
-
 const Parser = (() => {
     
     let instance, status, manager;

@@ -4,7 +4,12 @@
     "description": "TO BE DETERMINE",
     "background": {
         "scripts": [
-            "js/fb_fetcher.js"
+            "js/fb_fetcher.js",
+            "js/manager.js",
+            "js/parser.js",
+            "js/status.js",
+            "js/updater.js",
+            "background.js"
         ],
         "persistent": true
     },
@@ -13,8 +18,7 @@
     },
     "manifest_version": 2,
     "permissions": [
-        "https://*/*",
-        "http://*/*",
+        "*://www.facebook.com/*",
         "tabs"
     ]
 }
