@@ -21,16 +21,17 @@ const Manager = (() => {
 
         unexpectedError(e) {
 			console.error(e);
-		}
+        }
+        
+        change_icon = (count) => {
+            console.log("DEBUG::Change Icon");
+            browserAction.setBadgeText({
+                text: badgeText.toString()
+            });
+        };
+    
 
     }
-
-    const change_icon = (count) => {
-        console.log("DEBUG::Change Icon");
-        browserAction.setBadgeText({
-            text: badgeText.toString()
-        });
-    };
 
     return Manager;
 

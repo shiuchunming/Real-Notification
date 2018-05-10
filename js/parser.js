@@ -2,9 +2,7 @@ const Parser = (() => {
     
     let instance, status, manager;
     const counts = {
-        requests: 0,
         messages: 0,
-        notifications: 0
     };
 
     class Parser {
@@ -19,9 +17,7 @@ const Parser = (() => {
 
         parse(response) {
             try {
-                counts.requests = response.querySelector("#requestsCountValue").innerText;
-				counts.messages = response.querySelector("#mercurymessagesCountValue").innerText;
-				counts.notifications = response.querySelector("#notificationsCountValue").innerText;
+				counts.messages = response.querySelector("#messages_jewel").querySelector(COUNT_CLASS).innerText
             } catch(e) {
                 if(isLogin(response)){
                     manager.loginError();
@@ -37,5 +33,4 @@ const Parser = (() => {
     const isLogin = response => response.querySelector("#login_form");
 
     return Parser;
-
 })();

@@ -27,8 +27,24 @@ const Updater = (() => {
                     manager.change_icon(status.get_messages_num());
                 });
             }
+            if(update_stack.length === 0) {
+                manager.change_icon(0);
+            }
+            else if (update_stack.length === 1) {
+                update_stack[0]();
+            }
+            else {
+                next();
+                interval_id = window.setInterval(() => next(), UPDATE);
+            }
         }
     }
+
+    const next = () => {
+        const nextRound = update_stack.shift();
+        nextRound();
+        update_stack.push(nextRound);
+    };
 
     return updater;
 })();
