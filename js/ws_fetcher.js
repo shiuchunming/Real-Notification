@@ -1,8 +1,7 @@
 
-const FB_fetcher = (() => {
+const WS_fetcher = (() => {
     
-    const URL = "https://m.facebook.com/";
-    const URL_messages = "https://m.facebook.com/messages"
+    const URL = "https://web.whatsapp.com/";
     const STATE_DONE = 4, STATUS_OK = 200;
     let instance, status, parser, updater;
 
@@ -21,7 +20,7 @@ const FB_fetcher = (() => {
             return instance;
         }
 
-        fetch(url = URL, parseCallback = parser.parse_fb) {
+        fetch(url = URL, parseCallback = parser.parseWS) {
             status.reset_counts();
             xhr.onload = () => {
                 if(xhr.readyState === STATE_DONE && xhr.status === STATUS_OK) {
