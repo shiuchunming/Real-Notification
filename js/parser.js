@@ -15,13 +15,24 @@ const Parser = (() => {
             return instance;
         }
 
-        parse_fb(response) {
+        parse_fb(response,port) {
             const COUNT_CLASS = "._59tg";
             counts.messages = response.querySelector("#messages_jewel").querySelector(COUNT_CLASS).innerText;
             console.log(response.querySelector("#messages_flyout > div:nth-child(1) > ol > li:nth-child(3) > a > div > div.content > div.oneLine.preview.mfss.fcg > span"));
             status.set_counts(counts);
+            
+            try{
+                chrome.runtime.sendMessage({greeting: response.querySelector("#messages_flyout > div:nth-child(1) > ol > li:nth-child(3) > a > div > div.content > div.oneLine.preview.mfss.fcg > span").innerHTML}, function(a) {
+                });
+            }
+            catch(err){
+
+            }
+
         }
     }
+
+    
 
     return Parser;
 })();
