@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 chrome.runtime.onMessage.addListener(messageReceived);
 
 
@@ -23,3 +24,21 @@ function messageReceived(msg) {
         if(i==message_stack.length) break;
     }
 }
+=======
+$(function(){
+    $('.reminder').keypress(function(e){
+        if(e.which == 13) {
+            chrome.extension.sendMessage({msg: "reset_timer"});
+            localStorage.remind_msg = $('#remind-msg').val();
+            localStorage.remind_min = $('#remind-min').val();
+            localStorage.remind_sec = $('#remind-sec').val();
+            $('#remind-msg').val('');
+            $('#remind-min').val('');
+            $('#remind-sec').val('');
+            $('#remind-min').blur();
+            $('#remind-sec').blur();
+            
+        }
+    })
+})
+>>>>>>> 83005a4a76105fc768f8d919ed4712bbbf0bc402
