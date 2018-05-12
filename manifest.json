@@ -21,6 +21,7 @@
     "permissions": [
         "*://m.facebook.com/*",
         "*://www.facebook.com/*",
-        "tabs"
+        "tabs",
+        "notifications"
     ]
 }

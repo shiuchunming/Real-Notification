@@ -2,7 +2,6 @@
 const FB_fetcher = (() => {
     
     const URL = "https://m.facebook.com/";
-    const URL_messages = "https://m.facebook.com/messages"
     const STATE_DONE = 4, STATUS_OK = 200;
     let instance, status, parser, updater;
 
