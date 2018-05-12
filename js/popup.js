@@ -31,7 +31,7 @@ $(function () {
             var tmp = `
                 <div class="container" id="
                 ` + id_1 + `
-                "
+                " style="">
                 <img src="https://image.freepik.com/free-icon/facebook-logo_318-49940.jpg" alt="Avatar" >
                 <p id="
                 ` + id_2 + `
@@ -46,7 +46,7 @@ $(function () {
         }
         console.log(content);
         $('.messages').html(content);
-    }, 1000)
+    }, 0)
     
     console.log("123");
     $('.reminder').keypress(function (e) {
