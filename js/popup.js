@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 chrome.runtime.onMessage.addListener(messageReceived);
-
 
 var message_stack = [];
 
@@ -24,7 +22,7 @@ function messageReceived(msg) {
         if(i==message_stack.length) break;
     }
 }
-=======
+
 $(function(){
     $('.reminder').keypress(function(e){
         if(e.which == 13) {
@@ -41,4 +39,3 @@ $(function(){
         }
     })
 })
->>>>>>> 83005a4a76105fc768f8d919ed4712bbbf0bc402
