@@ -8,9 +8,9 @@ $(function(){
             $('#remind-msg').val('');
             $('#remind-min').val('');
             $('#remind-sec').val('');
+            $('#remind-msg').blur();
             $('#remind-min').blur();
             $('#remind-sec').blur();
-            
         }
     })
 })
