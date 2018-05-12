@@ -1,8 +1,6 @@
 chrome.runtime.onMessage.addListener(messageReceived);
 
-var message_stack = [];
 var message_json = [];
-var global_count = 0;
 
 function messageReceived(msg) {
     message_json = JSON.parse(localStorage.getItem("messages") || "[]");
