@@ -9,7 +9,6 @@ localStorage.remind_msg = "";
 
 function show() {
     notification = new Notification(new Date(), {
-        title: "",
         body: localStorage.remind_msg
     });
     setTimeout(notification.close.bind(notification), 4000);

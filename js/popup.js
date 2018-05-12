@@ -5,6 +5,12 @@ $(function(){
             localStorage.remind_msg = $('#remind-msg').val();
             localStorage.remind_min = $('#remind-min').val();
             localStorage.remind_sec = $('#remind-sec').val();
+            $('#remind-msg').val('');
+            $('#remind-min').val('');
+            $('#remind-sec').val('');
+            $('#remind-min').blur();
+            $('#remind-sec').blur();
+            
         }
     })
 })
