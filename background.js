@@ -41,7 +41,7 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse){
 });
 
 window.addEventListener("load", ()=>{
-    const UPDATE = 1000 * 10    ;
+    const UPDATE = 1000 * 5;
 
     const status = new Status();
     manager = new Manager(chrome.browserAction);
