@@ -7,6 +7,7 @@ var message_json = {
 
 function messageReceived(msg) {
     message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "whatsapp": []}');
+    console.log(msg.greeting);
     if (message_json.facebook.length > 0) {
         if (message_json.facebook[message_json.facebook.length - 1][0] != msg.greeting[0]) {
             message_json.facebook.push(msg.greeting);
