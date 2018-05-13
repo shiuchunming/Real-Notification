@@ -1,18 +1,20 @@
 chrome.runtime.onMessage.addListener(messageReceived);
 
-var message_json = [];
+var message_json = {
+    "facebook": [],
+    "whatsapp": []
+}
 
 function messageReceived(msg) {
-    message_json = JSON.parse(localStorage.getItem("messages") || "[]");
-
-    if (message_json.length > 0) {
-        if (message_json[message_json.length - 1] != msg.greeting) {
-            message_json.push(msg.greeting);
+    message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "whatsapp": []}');
+    if (message_json.facebook.length > 0) {
+        if (message_json.facebook[message_json.facebook.length - 1] != msg.greeting) {
+            message_json.facebook.push(msg.greeting);
             localStorage.setItem("messages", JSON.stringify(message_json));
         }
     }
-    else if (message_json.length == 0) {
-        message_json.push(msg.greeting);
+    else if (message_json.facebook.length == 0) {
+        message_json.facebook.push(msg.greeting);
         localStorage.setItem("messages", JSON.stringify(message_json));
     }
     console.log(msg.greeting);
@@ -20,12 +22,13 @@ function messageReceived(msg) {
 
 $(function () {
     setInterval(function(){
-        message_json = JSON.parse(localStorage.getItem("messages") || "[]");
+        message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "whatsapp": []}');
+        console.log(message_json.facebook);
         var content = "";
         var id_1 = 0;
         var id_2 = 0.1;
 
-        for(ele in message_json) {
+        for(ele in message_json.facebook) {
             var tmp = `
                 <div class="container" id="
                 ` + id_1 + `
@@ -34,7 +37,7 @@ $(function () {
                 <p id="
                 ` + id_2 + `
                 ">
-                ` + message_json[id_1] + `
+                ` + message_json.facebook[id_1] + `
                 </p>
                 </div>
                 `;
@@ -42,11 +45,9 @@ $(function () {
             id_1 += 1;
             id_2 += 1;
         }
-        console.log(content);
         $('.messages').html(content);
     }, 0)
     
-    console.log("123");
     $('.reminder').keypress(function (e) {
         if (e.which == 13) {
             chrome.extension.sendMessage({ msg: "reset_timer" });
