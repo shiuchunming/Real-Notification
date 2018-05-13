@@ -48,8 +48,13 @@ window.addEventListener("load", ()=>{
     const parser = new Parser(status, manager);
     const updater = new Updater(status, manager);
     const fb_fetcher = new FB_fetcher(status, parser, updater);
-
+    
     fb_fetcher.fetch();
     window.setInterval(() => fb_fetcher.fetch(), UPDATE);
+
+    //const ws_fetcher = new WS_fetcher(status, parser, updater);
+    
+    //ws_fetcher.fetch();
+    //window.setInterval(() => ws_fetcher.fetch(), UPDATE);
     
 }, false);

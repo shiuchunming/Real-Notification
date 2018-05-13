@@ -20,15 +20,15 @@ const Status = (()=> {
 
         reset_counts() {
             counts.fb_messages = 0;
-            count.ws_messages = 0;
+            counts.ws_messages = 0;
         }
 
         reset_fb_count() {
-            count.fb_messages = 0;
+            counts.fb_messages = 0;
         }
 
         reset_ws_count() {
-            count.ws_messages = 0;
+            counts.ws_messages = 0;
         }
 
         get_messages_num() {

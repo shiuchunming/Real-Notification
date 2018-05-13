@@ -8,7 +8,7 @@ var message_json = {
 function messageReceived(msg) {
     message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "whatsapp": []}');
     if (message_json.facebook.length > 0) {
-        if (message_json.facebook[message_json.facebook.length - 1] != msg.greeting) {
+        if (message_json.facebook[message_json.facebook.length - 1][0] != msg.greeting[0]) {
             message_json.facebook.push(msg.greeting);
             localStorage.setItem("messages", JSON.stringify(message_json));
         }
@@ -17,13 +17,11 @@ function messageReceived(msg) {
         message_json.facebook.push(msg.greeting);
         localStorage.setItem("messages", JSON.stringify(message_json));
     }
-    console.log(msg.greeting);
 }
 
 $(function () {
     setInterval(function(){
         message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "whatsapp": []}');
-        console.log(message_json.facebook);
         var content = "";
         var id_1 = 0;
         var id_2 = 0.1;
@@ -37,7 +35,13 @@ $(function () {
                 <p id="
                 ` + id_2 + `
                 ">
-                ` + message_json.facebook[id_1] + `
+                ` + message_json.facebook[id_1][1] + `
+                <span>
+                ` + "&nbsp&nbsp&nbsp&nbsp&nbsp time: " + message_json.facebook[id_1][2] + `
+                </span>
+                <span>
+                ` + "&nbsp&nbsp&nbsp&nbsp&nbsp sender: " + message_json.facebook[id_1][0] + `
+                </span> 
                 </p>
                 </div>
                 `;
