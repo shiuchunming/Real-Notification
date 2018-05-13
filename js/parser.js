@@ -20,19 +20,20 @@ const Parser = (() => {
             const COUNT_CLASS = "._59tg";
             counts.fb_messages = response.querySelector("#messages_jewel").querySelector(COUNT_CLASS).innerText;
             var list = [];
-            for (var i = 0; i < Number(counts.fb_messages); i++){
+            console.log(counts.fb_messages);
+            // for (var i = 0; i < Number(counts.fb_messages); i++){
                 // console.log(i+1+".");
                 // console.log("Name: "+ response.querySelector("#messages_flyout > div > ol").getElementsByTagName("li")[i+2].querySelector("a > div > div.content > div.lr > div.title.thread-title.mfsl.fcb > strong").innerText);
                 // console.log("Conetent: "+ response.querySelector("#messages_flyout > div > ol").getElementsByTagName("li")[i+2].querySelector("a > div > div.content > div.oneLine.preview.mfss.fcg > span").innerText);
                 // console.log("Time: "+response.querySelector("#messages_flyout > div > ol").getElementsByTagName("li")[i+2].querySelector("a > div > div.content > div.lr > div.time.r.nowrap.mfss.fcl > abbr").innerText);
-                list.push(response.querySelector("#messages_flyout > div > ol").getElementsByTagName("li")[i+2].querySelector("a > div > div.content > div.lr > div.title.thread-title.mfsl.fcb > strong").innerText);
-                list.push(response.querySelector("#messages_flyout > div > ol").getElementsByTagName("li")[i+2].querySelector("a > div > div.content > div.oneLine.preview.mfss.fcg > span").innerText);
-                list.push(response.querySelector("#messages_flyout > div > ol").getElementsByTagName("li")[i+2].querySelector("a > div > div.content > div.lr > div.time.r.nowrap.mfss.fcl > abbr").innerText);
-            }
+            list.push(response.querySelector("#messages_flyout > div > ol").getElementsByTagName("li")[i+2].querySelector("a > div > div.content > div.lr > div.title.thread-title.mfsl.fcb > strong").innerText);
+            list.push(response.querySelector("#messages_flyout > div > ol").getElementsByTagName("li")[i+2].querySelector("a > div > div.content > div.oneLine.preview.mfss.fcg > span").innerText);
+            list.push(response.querySelector("#messages_flyout > div > ol").getElementsByTagName("li")[i+2].querySelector("a > div > div.content > div.lr > div.time.r.nowrap.mfss.fcl > abbr").innerText);
+            // }
             status.set_counts(counts);
             
             try{
-                console.log(list);
+                // console.log(list);
                 chrome.runtime.sendMessage({greeting: list}, function(a) {
                 });
             }

@@ -9,7 +9,7 @@ function messageReceived(msg) {
     message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "whatsapp": []}');
     console.log(msg.greeting);
     if (message_json.facebook.length > 0) {
-        if (message_json.facebook[message_json.facebook.length - 1][0] != msg.greeting[0]) {
+        if (message_json.facebook[message_json.facebook.length - 1][1] != msg.greeting[1]) {
             message_json.facebook.push(msg.greeting);
             localStorage.setItem("messages", JSON.stringify(message_json));
         }
