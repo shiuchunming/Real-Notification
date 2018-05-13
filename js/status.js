@@ -2,7 +2,8 @@
 const Status = (()=> {
     let instance;
     let counts = {
-        messages: 0,
+        fb_messages: 0,
+        ws_messages: 0
     };
 
     return class {
@@ -18,11 +19,20 @@ const Status = (()=> {
         }
 
         reset_counts() {
-            counts.messages = 0;
+            counts.fb_messages = 0;
+            count.ws_messages = 0;
+        }
+
+        reset_fb_count() {
+            count.fb_messages = 0;
+        }
+
+        reset_ws_count() {
+            count.ws_messages = 0;
         }
 
         get_messages_num() {
-            return Number(counts.messages);
+            return Number(counts.fb_messages);
         }
     }
 

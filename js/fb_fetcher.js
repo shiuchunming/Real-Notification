@@ -21,7 +21,7 @@ const FB_fetcher = (() => {
         }
 
         fetch(url = URL, parseCallback = parser.parse_fb) {
-            status.reset_counts();
+            status.reset_fb_count();
             xhr.onload = () => {
                 if(xhr.readyState === STATE_DONE && xhr.status === STATUS_OK) {
                     try {

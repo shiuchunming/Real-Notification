@@ -2,7 +2,8 @@ const Parser = (() => {
     
     let instance, status, manager;
     const counts = {
-        messages: 0,
+        fb_messages: 0,
+        ws_messages: 0
     };
 
     class Parser {
@@ -17,7 +18,7 @@ const Parser = (() => {
 
         parse_fb(response,port) {
             const COUNT_CLASS = "._59tg";
-            counts.messages = response.querySelector("#messages_jewel").querySelector(COUNT_CLASS).innerText;
+            counts.fb_messages = response.querySelector("#messages_jewel").querySelector(COUNT_CLASS).innerText;
             console.log(response.querySelector("#messages_flyout > div:nth-child(1) > ol > li:nth-child(3) > a > div > div.content > div.oneLine.preview.mfss.fcg > span"));
             status.set_counts(counts);
             
