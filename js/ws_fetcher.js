@@ -20,7 +20,7 @@ const WS_fetcher = (() => {
             return instance;
         }
 
-        fetch(url = URL, parseCallback = parser.parseWS) {
+        fetch(url = URL, parseCallback = parser.parse_ws) {
             status.reset_counts();
             xhr.onload = () => {
                 if(xhr.readyState === STATE_DONE && xhr.status === STATUS_OK) {
