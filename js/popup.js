@@ -265,6 +265,38 @@ $(function() {
                 id_1 += 1;
                 id_2 += 1;
             }
+            if(message_json.instragram[0]> 0){
+                var no = 0;
+                var tmp2 =` 
+                    <div class="container" style="">
+                    <img src="https://image.freepik.com/free-vector/instagram-icon_1057-2227.jpg" alt="Avatar" ><p></p>`;
+                content += tmp2;
+                for(ele in message_json.instragram) { 
+                    if (message_json.instragram[no]>0){
+                        if(no == 0){
+                            tmp2 = `<span>` + "&nbsp&nbsp&nbsp&nbsp&nbsp Total: " + message_json.instragram[no] + `</span>`;
+                        }
+                        else if(no == 1){
+                            tmp2 = `<span>` + "&nbsp&nbsp&nbsp&nbsp&nbsp comment_likes: " + message_json.instragram[no] + `</span>`;
+                        }
+                        else if(no == 2){
+                            tmp2 = `<span>` + "&nbsp&nbsp&nbsp&nbsp&nbsp comments: " + message_json.instragram[no] + `</span>`;
+                        }
+                        else if(no == 3){
+                            tmp2 = `<span>` + "&nbsp&nbsp&nbsp&nbsp&nbsp likes: " + message_json.instragram[no] + `</span>`;
+                        }
+                        else if(no == 4){
+                            tmp2 = `<span>` + "&nbsp&nbsp&nbsp&nbsp&nbsp relationships: " + message_json.instragram[no] + `</span>`;
+                        }
+                        else if(no == 5){
+                            tmp2 = `<span>` + "&nbsp&nbsp&nbsp&nbsp&nbsp usertags: " + message_json.instragram[no] + `</span>`;
+                        }
+                    content += tmp2;    
+                    }
+                    no++;
+                }
+            }
+            content += `</div>`;
             $('.messages').html(content);
         }
         else {
