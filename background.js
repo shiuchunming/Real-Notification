@@ -52,9 +52,9 @@ window.addEventListener("load", ()=>{
     fb_fetcher.fetch();
     window.setInterval(() => fb_fetcher.fetch(), UPDATE);
 
-    //const ws_fetcher = new WS_fetcher(status, parser, updater);
+    // const ig_fetcher = new IG_fetcher(status, parser, updater);
     
-    //ws_fetcher.fetch();
-    //window.setInterval(() => ws_fetcher.fetch(), UPDATE);
+    // ig_fetcher.fetch();
+    // window.setInterval(() => ig_fetcher.fetch(), UPDATE);
     
 }, false);

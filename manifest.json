@@ -4,7 +4,7 @@
     "description": "TO BE DETERMINE",
     "background": {
         "scripts": [
-            "js/ws_fetcher.js",
+            "js/ig_fetcher.js",
             "js/fb_fetcher.js",
             "js/manager.js",
             "js/parser.js",
@@ -25,7 +25,7 @@
     "permissions": [
         "*://m.facebook.com/*",
         "*://www.facebook.com/*",
-        "*://web.whatsapp.com/*",
+        "*://www.instagram.com/*",
         "tabs",
         "notifications"
     ]

@@ -3,7 +3,7 @@ const Parser = (() => {
     let instance, status, manager;
     const counts = {
         fb_messages: 0,
-        ws_messages: 0
+        ig_messages: 0
     };
 
     class Parser {
@@ -34,7 +34,7 @@ const Parser = (() => {
             
             try{
                 // console.log(list);
-                chrome.runtime.sendMessage({greeting: list}, function(a) {
+                chrome.runtime.sendMessage({greeting: list,type:"ig"}, function(a) {
                 });
             }
             catch(err){
@@ -42,15 +42,22 @@ const Parser = (() => {
             }
 
         }
-        parse_ws(response,port) {
-            const COUNT_CLASS = "._59tg";
-            counts.messages = response.documentElement;
-            console.log(counts.messages )
-            console.log(response.querySelector("#messages_flyout > div:nth-child(1) > ol > li:nth-child(3) > a > div > div.content > div.oneLine.preview.mfss.fcg > span"));
+        parse_ig(response,port) {
+            var exp;
+            try {
+                console.log(response.documentElement);
+                counts.messages = response.documentElement.getElementsByTagName("script")[2].innerText;
+                exp = /{"activity_counts":{"comment_likes":(\d+),"comments":(\d+),"likes":(\d+),"relationships":(\d+),"usertags":(\d+)/.exec(counts.messages);
+                console.log(exp);
+            } catch(e) {
+                console.log(e);
+            }
+            counts.ig_messages = Number(exp[1])+Number(exp[2])+Number(exp[3])+Number(exp[4])+Number(exp[5]);//1.comment_likes 2. comments":1, 3.likes 4.relationships 5.usertags
+            exp[0]=counts.ig_messages;//total counts
             status.set_counts(counts);
             
             try{
-                chrome.runtime.sendMessage({greeting: response.querySelector("#messages_flyout > div:nth-child(1) > ol > li:nth-child(3) > a > div > div.content > div.oneLine.preview.mfss.fcg > span").innerHTML}, function(a) {
+                chrome.runtime.sendMessage({greeting: exp,type:"ig"}, function(a) {
                 });
             }
             catch(err){

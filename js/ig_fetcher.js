@@ -1,7 +1,7 @@
 
-const WS_fetcher = (() => {
+const IG_fetcher = (() => {
     
-    const URL = "https://web.whatsapp.com/";
+    const URL = "https://www.instagram.com/";
     const STATE_DONE = 4, STATUS_OK = 200;
     let instance, status, parser, updater;
 
@@ -20,7 +20,7 @@ const WS_fetcher = (() => {
             return instance;
         }
 
-        fetch(url = URL, parseCallback = parser.parse_ws) {
+        fetch(url = URL, parseCallback = parser.parse_ig) {
             status.reset_counts();
             xhr.onload = () => {
                 if(xhr.readyState === STATE_DONE && xhr.status === STATUS_OK) {

@@ -4,15 +4,26 @@ var notification = null;
 var rate = 0;
 var message_json = {
     "facebook": [],
-    "whatsapp": []
+    "instragram": []
 }
 var gateway = true;
 
 function messageReceived(msg) {
-    message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "whatsapp": []}');
+    message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "instragram": []}');
+    if(msg.type =="fb"){
+        if (message_json.facebook.length > 0) {
+            if (message_json.facebook[message_json.facebook.length - 1][1] != msg.greeting[1]) {
+                message_json.facebook.push(msg.greeting);
+                localStorage.setItem("messages", JSON.stringify(message_json));
 
-    if (message_json.facebook.length > 0) {
-        if (message_json.facebook[message_json.facebook.length - 1][1] != msg.greeting[1]) {
+                notification = new Notification(new Date(), {
+                    icon: "https://image.freepik.com/free-icon/facebook-logo_318-49940.jpg",
+                    body: msg.greeting[1]
+                });
+                setTimeout(notification.close.bind(notification), 4000);
+            }
+        }
+        else if (message_json.facebook.length == 0) {
             message_json.facebook.push(msg.greeting);
             localStorage.setItem("messages", JSON.stringify(message_json));
 
@@ -23,21 +34,27 @@ function messageReceived(msg) {
             setTimeout(notification.close.bind(notification), 4000);
         }
     }
-    else if (message_json.facebook.length == 0) {
-        message_json.facebook.push(msg.greeting);
-        localStorage.setItem("messages", JSON.stringify(message_json));
+    else if (msg.type =="ig"){
+        if(message_json.instragram[0]==msg.greeting[0]){
 
-        notification = new Notification(new Date(), {
-            icon: "https://image.freepik.com/free-icon/facebook-logo_318-49940.jpg",
-            body: msg.greeting[1]
-        });
-        setTimeout(notification.close.bind(notification), 4000);
+        }
+        else{
+            message_json.instragram = msg.greeting;
+            localStorage.setItem("messages", JSON.stringify(message_json));
+
+            notification = new Notification(new Date(), {
+                icon: "https://image.freepik.com/free-vector/instagram-icon_1057-2227.jpg",
+                body: msg.greeting
+            });
+            setTimeout(notification.close.bind(notification), 4000);
+        }
+        
     }
 }
-``
+
 setInterval(function(){
     if(gateway){
-        message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "whatsapp": []}');
+        message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "instragram": []}');
         var content = "";
         var id_1 = 0;
         var id_2 = 0.1;
@@ -65,10 +82,43 @@ setInterval(function(){
             id_1 += 1;
             id_2 += 1;
         }
+        //1.comment_likes 2. comments":1, 3.likes 4.relationships 5.usertags
+        if(message_json.instragram[0]> 0){
+            var no = 0;
+            var tmp2 =` 
+                <div class="container" style="">
+                <img src="https://image.freepik.com/free-vector/instagram-icon_1057-2227.jpg" alt="Avatar" ><p></p>`;
+            content += tmp2;
+            for(ele in message_json.instragram) { 
+                if (message_json.instragram[no]>0){
+                    if(no == 0){
+                        tmp2 = `<span>` + "&nbsp&nbsp&nbsp&nbsp&nbsp Total: " + message_json.instragram[no] + `</span>`;
+                    }
+                    else if(no == 1){
+                        tmp2 = `<span>` + "&nbsp&nbsp&nbsp&nbsp&nbsp comment_likes: " + message_json.instragram[no] + `</span>`;
+                    }
+                    else if(no == 2){
+                        tmp2 = `<span>` + "&nbsp&nbsp&nbsp&nbsp&nbsp comments: " + message_json.instragram[no] + `</span>`;
+                    }
+                    else if(no == 3){
+                        tmp2 = `<span>` + "&nbsp&nbsp&nbsp&nbsp&nbsp likes: " + message_json.instragram[no] + `</span>`;
+                    }
+                    else if(no == 4){
+                        tmp2 = `<span>` + "&nbsp&nbsp&nbsp&nbsp&nbsp relationships: " + message_json.instragram[no] + `</span>`;
+                    }
+                    else if(no == 5){
+                        tmp2 = `<span>` + "&nbsp&nbsp&nbsp&nbsp&nbsp usertags: " + message_json.instragram[no] + `</span>`;
+                    }
+                content += tmp2;    
+                }
+                no++;
+            }
+        }
+        content += `</div>`;
         $('.messages').html(content);
     }
     else {
-        message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "whatsapp": []}');
+        message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "instragram": []}');
         var content = `
             <style>
             .spinner {

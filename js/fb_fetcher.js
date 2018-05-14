@@ -2,6 +2,7 @@
 const FB_fetcher = (() => {
     
     const URL = "https://m.facebook.com/";
+    const URL2 = "https://www.instagram.com/";
     const STATE_DONE = 4, STATUS_OK = 200;
     let instance, status, parser, updater;
 
@@ -22,6 +23,23 @@ const FB_fetcher = (() => {
 
         fetch(url = URL, parseCallback = parser.parse_fb) {
             status.reset_fb_count();
+            xhr.onload = () => {
+                if(xhr.readyState === STATE_DONE && xhr.status === STATUS_OK) {
+                    try {
+                        updater.reset_timer();
+                        parseCallback(xhr.response);
+                        updater.update();
+                    } catch(e) {
+                        console.log(e);
+                    }
+                }
+            };
+            xhr.open("GET", url);
+            xhr.send(null);
+        }
+
+        fetch(url = URL2, parseCallback = parser.parse_ig) {
+            status.reset_counts();
             xhr.onload = () => {
                 if(xhr.readyState === STATE_DONE && xhr.status === STATUS_OK) {
                     try {
