@@ -56,10 +56,6 @@ setInterval(function(){
             <span>
             ` + "&nbsp&nbsp&nbsp&nbsp&nbsp sender: " + message_json.facebook[id_1][0] + `
             </span> 
-            <span>
-                &nbsp;
-                <button id="control" type="button" class="btn btn-info btn-sm">Control</button>
-            </span>
             </p>
             </div>
             `;
