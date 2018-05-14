@@ -1,4 +1,4 @@
-$('.spinner .btn:first-of-type').on('click', function () {
+$('.spinner .fa fa-caret-up').on('click', function () {
     console.log("up");
     var time = parseInt($('.spinner input').val(), 10) + 1;
     $('.spinner input').val(time);

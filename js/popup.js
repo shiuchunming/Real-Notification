@@ -89,7 +89,8 @@ var timerITV = setInterval(function(){
             var no = 0;
             var tmp2 =` 
                 <div class="container" style="">
-                <img src="https://image.freepik.com/free-vector/instagram-icon_1057-2227.jpg" alt="Avatar" ><p></p>`;
+                <a href="https://www.instagram.com/" target="_blank">
+                <img src="https://image.freepik.com/free-vector/instagram-icon_1057-2227.jpg" alt="Avatar" ></a><p></p>`;
             content += tmp2;
             for(ele in message_json.instragram) { 
                 if (message_json.instragram[no]>0){
@@ -269,7 +270,8 @@ $(function() {
                 var no = 0;
                 var tmp2 =` 
                     <div class="container" style="">
-                    <img src="https://image.freepik.com/free-vector/instagram-icon_1057-2227.jpg" alt="Avatar" ><p></p>`;
+                    <a href="https://www.instagram.com/">
+                    <img src="https://image.freepik.com/free-vector/instagram-icon_1057-2227.jpg" alt="Avatar" ></a><p></p>`;
                 content += tmp2;
                 for(ele in message_json.instragram) { 
                     if (message_json.instragram[no]>0){
