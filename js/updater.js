@@ -3,7 +3,7 @@ const Updater = (() => {
     const UPDATE = 5000;
 
     let instance, status, manager;
-    let interval_id;
+    let interval_id;    
     let update_stack;
 
     class Updater {
