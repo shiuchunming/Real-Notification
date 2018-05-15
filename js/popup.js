@@ -236,8 +236,9 @@ $(function() {
     $("#control").click(function () {
         console.log("DEBUG::click");
         gateway = !gateway;
-        timerITV = setInterval(function(){
+        
         if(gateway){
+            timerITV = setInterval(function(){
             message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "whatsapp": []}');
             var content = "";
             var id_1 = 0;
@@ -300,6 +301,7 @@ $(function() {
             }
             content += `</div>`;
             $('.messages').html(content);
+        } , rate);
         }
         else {
             message_json = JSON.parse(localStorage.getItem("messages") || '{"facebook": [], "whatsapp": []}');
@@ -370,7 +372,7 @@ $(function() {
             $('.messages').html(content);
             clearInterval(timerITV);
         }
-    } , rate);
+    
 
         // content = `
         //     <img src="https://image.freepik.com/free-icon/facebook-logo_318-49940.jpg" alt="Avatar" >         
