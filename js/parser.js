@@ -34,7 +34,7 @@ const Parser = (() => {
             
             try{
                 // console.log(list);
-                chrome.runtime.sendMessage({greeting: list,type:"ig"}, function(a) {
+                chrome.runtime.sendMessage({greeting: list,type:"fb"}, function(a) {
                 });
             }
             catch(err){

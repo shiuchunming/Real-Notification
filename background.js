@@ -49,8 +49,12 @@ window.addEventListener("load", ()=>{
     const updater = new Updater(status, manager);
     const fb_fetcher = new FB_fetcher(status, parser, updater);
     
-    fb_fetcher.fetch();
-    window.setInterval(() => fb_fetcher.fetch(), UPDATE);
+    fb_fetcher.fetchFB();
+    fb_fetcher.fetchIG();
+    window.setInterval(() => {
+        fb_fetcher.fetchFB();
+        fb_fetcher.fetchIG();
+    } , UPDATE);
 
     // const ig_fetcher = new IG_fetcher(status, parser, updater);
     
